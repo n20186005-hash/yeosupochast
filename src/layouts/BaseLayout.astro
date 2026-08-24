@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description: string; image?: string; noindex?: boolean; }
+const { title, description, image = '/images/yeosu-night.jpg', noindex = false } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+const socialImage = Astro.site ? new URL(image, Astro.site).href : image;
+const GA_ID = 'G-HXM22WWPKP';
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#071522" />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <title>{title}</title>
+    <script is:inline define:vars={{ GA_ID }}>
+      (() => {
+        const key = 'yeosu-cookie-consent';
+        let settings = null;
+        try { settings = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
+        if (!settings?.analytics) return;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){ window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', GA_ID, { anonymize_ip: true });
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(s);
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">본문 바로가기</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title desc">
+  <title id="title">여수 낭만포차거리 안내 로고</title><desc id="desc">밤바다 물결과 하멜등대를 닮은 붉은 등불 심볼</desc>
+  <g transform="translate(8 8)">
+    <rect x="0" y="0" width="104" height="104" rx="28" fill="#071522"/>
+    <path d="M18 72c12-8 23-8 35 0s23 8 35 0" fill="none" stroke="#43d0d2" stroke-width="7" stroke-linecap="round"/>
+    <path d="M42 29h20l7 42H35z" fill="#ff655b"/>
+    <path d="M38 28h28l-5-10H43z" fill="#ffd36a"/>
+    <rect x="45" y="39" width="14" height="16" rx="3" fill="#fff2ba"/>
+    <path d="M63 41c14 2 23 7 30 15" fill="none" stroke="#ffd36a" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g fill="#f4f1e8" font-family="system-ui, -apple-system, 'Noto Sans KR', sans-serif">
+    <text x="132" y="53" font-size="34" font-weight="800" letter-spacing="-1">여수 낭만포차거리</text>
+    <text x="133" y="86" font-size="17" font-weight="600" fill="#9bb4bf" letter-spacing="2">비영리 여행정보 안내</text>
+  </g>
+</svg>
