@@ -21,13 +21,20 @@ pnpm build
 
 ## 도메인 설정
 
-도메인은 **한 곳**에서만 주입합니다. `.env` 또는 배포 환경변수에 아래 값을 설정하세요.
+기본값은 **https://yeosupochast.com** 입니다. `astro.config.mjs`의 `SITE` 상수가 그 기준값이며, 다른 도메인을 쓸 때만 `.env` 또는 배포 환경변수로 덮어씁니다.
 
 ```bash
-SITE_URL=https://실제-도메인
+SITE_URL=https://변경할-도메인
 ```
 
-`SITE_URL`이 비어 있어도 빌드됩니다. 이 경우 canonical/절대 `og:url`을 생략하고, `@astrojs/sitemap`도 활성화하지 않습니다. 도메인이 설정되면 Astro의 `site` 값을 통해 canonical, Open Graph, JSON-LD와 sitemap이 같은 기준 URL을 사용합니다.
+`site` 값이 항상 설정되므로 canonical, 절대 `og:url`, hreflang(`ko`, `x-default`), JSON-LD, `sitemap-index.xml`이 같은 기준 URL로 생성됩니다.
+
+## HTTPS · 보안 헤더 · 사이트맵
+
+- **HTTP → HTTPS 301**은 코드가 아니라 Cloudflare 대시보드 **SSL/TLS → Edge Certificates → Always Use HTTPS**로 처리합니다.
+- HSTS와 기타 보안 헤더는 `public/_headers`가 내려줍니다. 역시 적용 대상은 Cloudflare 배포 결과입니다.
+- `public/robots.txt`가 `https://yeosupochast.com/sitemap-index.xml`을 가리킵니다. 배포 후 Google Search Console에 사이트맵 URL을 한 번 제출하세요.
+- JSON-LD는 `TouristAttraction + LocalBusiness`(계절별 `openingHoursSpecification`, 좌표, `hasMap`)와 `FAQPage`를 `index.astro`에서 함께 출력합니다.
 
 ## Cloudflare Workers 배포
 

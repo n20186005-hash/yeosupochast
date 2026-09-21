@@ -5,6 +5,7 @@ const { title, description, image = '/images/yeosu-night.jpg', noindex = false }
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
 const socialImage = Astro.site ? new URL(image, Astro.site).href : image;
 const GA_ID = 'G-HXM22WWPKP';
+const SITE_NAME = '여수 낭만포차거리 안내';
 ---
 <!doctype html>
 <html lang="ko">
@@ -16,12 +17,18 @@ const GA_ID = 'G-HXM22WWPKP';
     {noindex && <meta name="robots" content="noindex,follow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImage} />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    {canonical && <link rel="alternate" hreflang="ko" href={canonical} />}
+    {canonical && <link rel="alternate" hreflang="x-default" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
