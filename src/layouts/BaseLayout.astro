@@ -5,7 +5,8 @@ const { title, description, image = '/images/yeosu-night.jpg', noindex = false }
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
 const socialImage = Astro.site ? new URL(image, Astro.site).href : image;
 const GA_ID = 'G-HXM22WWPKP';
-const SITE_NAME = '여수 낭만포차거리 안내';
+// SEO 사이트명 형식: 관광지명 + 도시 + 여행 가이드
+const SITE_NAME = '여수 낭만포차거리 여수 — 여행 가이드';
 ---
 <!doctype html>
 <html lang="ko">
