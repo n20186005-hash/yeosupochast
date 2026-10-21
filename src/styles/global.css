@@ -32,3 +32,8 @@ a { color: inherit; }
 .skip { position:absolute; left:-9999px; top:0; }
 .skip:focus { left:16px; top:16px; z-index:100; background:var(--paper); color:var(--ink); padding:10px 14px; border-radius:8px; }
 @media (max-width: 760px) { .section { padding: 68px 0; } .container { width:min(100% - 28px,1120px); } }
+
+/* Navigation remains reachable on small screens; captions use readable space. */
+header a,nav a,footer a,button,summary{min-height:44px}header a,nav a,footer a{display:inline-flex;align-items:center}
+.grid>*,.container>*{min-width:0}h1,h2,h3,p,dd,a{overflow-wrap:anywhere}
+@media(max-width:1023px){.site-header-inner{flex-wrap:wrap;padding-block:.75rem}.main-nav{order:3;flex-basis:100%;display:flex;flex-wrap:wrap;gap:0 1rem}.main-header{position:relative!important}.hero-credit{position:relative!important;bottom:auto!important;right:auto!important;padding:1rem;font-size:.75rem!important}}
